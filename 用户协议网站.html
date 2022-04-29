@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+            display: flex;
+            width: 500px;
+            height: 40px;
+            border: 1px solid red;
+        }
+
+        .tabItem {
+            padding: 20px 100px;
+            background-color: azure;
+            align-items: center;
+            justify-content: center;
+            display: inline-flex;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="tabContainer">
+
+    </header>
+    <div>
+        价格:<span class="price">0</span>'元'
+    </div>
+</body>
+<script>
+    let arr = [{ name: '菜单1', price: 98 }, { name: '菜单2', price: 100 }]
+    function test () {
+        let tabContainer = document.querySelector('.tabContainer')
+        // 遍历数组,生成tab项目
+        let tabs = arr.map((item, index) => {
+            let span = document.createElement('span')
+            span.classList.add('tabItem')
+            span.innerText = item.name
+            span.addEventListener('click', function (e) {
+                let priceEl = document.querySelector('.price')
+                priceEl.innerText = arr[index].price
+            })
+            return span
+        })
+        let fragment = document.createDocumentFragment()
+        tabs.forEach((item, index) => {
+            fragment.appendChild(item)
+        })
+        this
+    }
+    test();
+
+
+
+</script>
+
+</html>
